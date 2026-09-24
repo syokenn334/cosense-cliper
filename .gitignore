@@ -1,0 +1,12 @@
+node_modules/
+.npm-cache/
+test-results/
+.browser-test/
+*.local.json
+.env*
+
+# Local planning notes and the early prototype are not part of the distribution.
+debug.md
+spec.md
+research.md
+poc/

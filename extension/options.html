@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Cosense Clip — 設定</title><link rel="stylesheet" href="ui.css"></head>
+<body class="settings-page"><main>
+  <h1>設定</h1>
+  <section>
+    <p id="account" class="hint">未接続</p>
+    <form id="settings">
+      <label for="project">プロジェクト名</label><input id="project" required maxlength="100" placeholder="プロジェクト名" autocomplete="off">
+      <label for="token">Personal Access Token</label><input id="token" type="password" autocomplete="off" spellcheck="false" placeholder="PAT">
+      <p class="hint"><a href="https://scrapbox.io/settings/personal-access-tokens" target="_blank" rel="noopener noreferrer">PATを発行 ↗</a></p>
+      <label class="check"><input id="remember" type="checkbox">このブラウザにPATを保存する</label>
+      <p class="hint">オフの場合、Chrome終了時にPATを消去します。</p>
+      <label for="defaultTags">既定のタグ</label><input id="defaultTags" maxlength="2400" placeholder="タグ名">
+      <div class="actions"><button type="button" id="disconnect">接続を解除</button><button class="primary" id="connect">接続を確認して保存</button></div>
+      <p id="status" class="status" role="status"></p>
+    </form>
+  </section>
+  <section><div class="actions" style="margin-top:0"><h2>最近の保存</h2><button id="refresh" type="button">更新</button></div>
+    <div id="history"></div>
+  </section>
+  <p id="version" class="hint"></p>
+</main><script src="options.js" type="module"></script></body>
+</html>

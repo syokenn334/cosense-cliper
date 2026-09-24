@@ -1,0 +1,70 @@
+/* Light/dark follow the OS. Dark palette: nagurigaki-exe/settings. */
+:host { all: initial; }
+* { box-sizing: border-box; }
+.clip-ui, .settings-page {
+  --bg: #ffffff; --surface: #f6f8fa; --button: #f0f3f5; --text: #24292f;
+  --muted: #57606a; --placeholder: #6e7781; --border: #d0d7de;
+  --accent: #19733a; --primary: #238636; --on-primary: #ffffff;
+  --error: #b42318; --ring: #23863622; --shadow: #1f232826;
+  color: var(--text); background: var(--bg); color-scheme: light;
+  font: 14px/1.65 Inter, "Zen Kaku Gothic New", "Yu Gothic UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  .clip-ui, .settings-page {
+    --bg: #0d0f12; --surface: #11151a; --button: #171b21; --text: #d8dee9;
+    --muted: #b1bac4; --placeholder: #8b949e; --border: #30363d;
+    --accent: #7ee787; --primary: #7ee787; --on-primary: #0d0f12;
+    --error: #ff9b9b; --ring: #7ee78722; --shadow: #0008; color-scheme: dark;
+  }
+}
+dialog.clip-ui { position: fixed; inset: 16px 16px auto auto; padding: 0; margin: 0; width: min(440px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); overflow: auto; border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 8px 32px var(--shadow); }
+dialog.clip-ui::backdrop { background: transparent; backdrop-filter: none; }
+.clip-ui header { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 20px 8px; }
+h1, h2, p { margin: 0; }
+.clip-ui h1, .settings-page h1 { font-size: 18px; font-weight: 600; }
+.clip-ui form { padding: 0 20px 20px; }
+label { display: block; margin: 14px 0 6px; font-size: 12px; color: var(--muted); }
+input, textarea, button {
+  font: inherit;
+  font-family: "Noto Sans", "Noto Sans JP", sans-serif;
+}
+input:not([type="checkbox"]), textarea { width: 100%; border: 1px solid var(--border); border-radius: 6px; padding: 9px 11px; color: var(--text); background: var(--surface); outline: none; }
+input:focus, textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 2px var(--ring); }
+textarea { min-height: 96px; resize: vertical; font-size: 15px; line-height: 1.8; }
+input::placeholder, textarea::placeholder {
+  color: var(--placeholder);
+  font-family: "Noto Sans", "Noto Sans JP", sans-serif;
+  font-style: normal;
+}
+button, .button { cursor: pointer; border: 1px solid var(--border); border-radius: 7px; padding: 8px 14px; background: var(--button); color: var(--text); text-decoration: none; }
+button:hover, .button:hover { border-color: var(--accent); }
+button.primary { color: var(--on-primary); background: var(--primary); border-color: var(--primary); font-weight: 600; }
+button:disabled { opacity: .5; cursor: default; }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+button.close { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 30px; width: 30px; height: 30px; margin: 0; padding: 0; line-height: 0; appearance: none; background: transparent; color: var(--muted); border: 1px solid transparent; }
+button.close svg { display: block; width: 16px; height: 16px; }
+button.close:hover { background: var(--button); }
+.source { margin: 4px 0 8px; color: var(--muted); font: 11px/1.6 "Fira Code", Consolas, monospace; overflow-wrap: anywhere; max-height: 54px; overflow: auto; }
+.destination { font-size: 12px; color: var(--muted); }
+.destination span { color: var(--accent); }
+.actions { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 18px; }
+.actions .right { display: flex; gap: 8px; }
+.quiet { display: inline-flex; align-items: center; justify-content: center; min-height: 36px; margin: 0; padding: 8px 14px; background: transparent; border: 1px solid transparent; color: var(--muted); }
+.hint { color: var(--muted); font-size: 12px; margin-top: 7px; }
+.status { margin-top: 12px; white-space: pre-wrap; overflow-wrap: anywhere; color: var(--muted); }
+.status:empty { display: none; }
+.status[data-tone="error"] { color: var(--error); }
+.status[data-tone="success"] { color: var(--accent); }
+a { color: var(--accent); }
+.result-link { display: inline-block; margin-top: 8px; }
+[hidden] { display: none !important; }
+.settings-page { margin: 0; min-height: 100vh; }
+.settings-page main { max-width: 640px; margin: 32px auto; padding: 0 24px; }
+.settings-page section { margin: 20px 0; padding: 20px; border: 1px solid var(--border); border-radius: 8px; }
+.settings-page h2 { font-size: 14px; font-weight: 600; }
+.check { display: flex; align-items: center; gap: 8px; }
+input[type="checkbox"] { accent-color: var(--primary); }
+.history-item { padding: 12px 0; border-bottom: 1px solid var(--border); overflow-wrap: anywhere; }
+.history-item:last-child { border: 0; }
+.history-item p { font-size: 12px; color: var(--muted); }
+@media (max-width: 480px) { dialog.clip-ui { inset: 8px 8px auto auto; width: calc(100vw - 16px); max-height: calc(100dvh - 16px); } .clip-ui header { padding: 12px 16px 8px; } .clip-ui form { padding: 0 16px 16px; } .settings-page main { margin: 20px auto; padding: 0 16px; } }
